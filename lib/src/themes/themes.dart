@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 ThemeData get lightTheme => ThemeData(
       useMaterial3: true,
       colorScheme: _lightColorScheme,
-      //fontFamily: 'Lato',
       appBarTheme: AppBarTheme(
         centerTitle: true,
         backgroundColor: _lightColorScheme.primaryContainer,
@@ -18,7 +17,6 @@ ThemeData get lightTheme => ThemeData(
 ThemeData get darkTheme => ThemeData(
       useMaterial3: true,
       colorScheme: _darkColorScheme,
-      //fontFamily: 'Lato',
       appBarTheme: AppBarTheme(
         centerTitle: true,
         backgroundColor: _darkColorScheme.primaryContainer,

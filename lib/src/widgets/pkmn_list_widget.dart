@@ -10,7 +10,14 @@ class PkmnListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: Image.network(pkmn.getImageUrl(pkmn.id), scale: 2),
+        leading: Image.network(
+          pkmn.getImageUrl(pkmn.id),
+          errorBuilder: (context, error, stackTrace) {
+            return CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+            );
+          },
+        ),
         title: Text(pkmn.capitalize(pkmn.name)),
         subtitle: Text('#${(pkmn.id.toString().padLeft(4, '0'))}'),
         onTap: () {

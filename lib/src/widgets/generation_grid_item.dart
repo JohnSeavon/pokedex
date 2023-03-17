@@ -10,36 +10,52 @@ class GenerationGridItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: GridTile(
-        footer: GridTileBar(
-            title: Text(
-          'Generation ${generation.generation}',
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
-              ),
-        )),
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pushNamed(AppRoutes.pkmnList, arguments: generation);
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: () {
+          Navigator.of(context).pushNamed(AppRoutes.pkmnList, arguments: generation);
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(
-                'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId}.png',
-                width: 100,
-                height: 100,
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    right: 80,
+                    bottom: 20,
+                    child: Image.network(
+                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId}.png',
+                      width: 90,
+                      height: 90,
+                    ),
+                  ),
+                  Positioned(
+                    left: 80,
+                    bottom: 20,
+                    child: Image.network(
+                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 6}.png',
+                      width: 90,
+                      height: 90,
+                    ),
+                  ),
+                  Image.network(
+                    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 3}.png',
+                    width: 110,
+                    height: 110,
+                  ),
+                ],
               ),
-              Image.network(
-                'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 3}.png',
-                width: 100,
-                height: 100,
-              ),
-              Image.network(
-                'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 6}.png',
-                width: 100,
-                height: 100,
+              const SizedBox(height: 5),
+              Text(
+                'Generation ${generation.generation}',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      fontFamily: 'Anton',
+                    ),
               ),
             ],
           ),

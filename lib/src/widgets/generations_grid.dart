@@ -10,15 +10,12 @@ class GenerationsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Generation> list = generationsList;
-    return GridView.builder(
-      padding: const EdgeInsets.all(10),
-      itemCount: list.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 1,
-        childAspectRatio: 4 / 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 20,
       ),
+      itemCount: list.length,
       itemBuilder: (context, index) => GenerationGridItem(list[index]),
     );
   }

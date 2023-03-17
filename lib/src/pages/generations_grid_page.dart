@@ -9,7 +9,7 @@ class GenerationsGridPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Generations'),
+        title: const Text('PokéDex'),
       ),
       body: const GenerationsGrid(),
     );

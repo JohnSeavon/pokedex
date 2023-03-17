@@ -13,7 +13,7 @@ class PkmnListPage extends StatelessWidget {
     final list = PkmnList((generation.initialId - 1), generation.total);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pkmn List'),
+        title: Text('Generation ${generation.generation}'),
       ),
       body: FutureBuilder(
         future: list.loadPkmn(),
@@ -26,6 +26,10 @@ class PkmnListPage extends StatelessWidget {
             );
           } else {
             return ListView.builder(
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 20,
+              ),
               itemCount: list.itemsCount,
               itemBuilder: (context, index) {
                 return PkmnListWidget(list.items[index]);

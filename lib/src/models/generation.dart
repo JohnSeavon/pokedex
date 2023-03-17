@@ -1,7 +1,7 @@
 class Generation {
-  int generation;
-  int initialId;
-  int finalId;
+  final String generation;
+  final int initialId;
+  final int finalId;
 
   Generation(
     this.generation,
