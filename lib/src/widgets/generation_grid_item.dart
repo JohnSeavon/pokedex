@@ -9,6 +9,10 @@ class GenerationGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool generationV = false;
+    if (generation.generation == 'V') {
+      generationV = true;
+    }
     return Card(
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
@@ -27,7 +31,9 @@ class GenerationGridItem extends StatelessWidget {
                     right: 80,
                     bottom: 20,
                     child: Image.network(
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId}.png',
+                      (generationV)
+                          ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId + 1}.png'
+                          : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId}.png',
                       width: 90,
                       height: 90,
                     ),
@@ -36,13 +42,17 @@ class GenerationGridItem extends StatelessWidget {
                     left: 80,
                     bottom: 20,
                     child: Image.network(
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 6}.png',
+                      (generationV)
+                          ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId + 7}.png'
+                          : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 6}.png',
                       width: 90,
                       height: 90,
                     ),
                   ),
                   Image.network(
-                    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 3}.png',
+                    (generationV)
+                        ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId + 4}.png'
+                        : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 3}.png',
                     width: 110,
                     height: 110,
                   ),

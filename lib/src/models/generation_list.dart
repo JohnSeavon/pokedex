@@ -9,5 +9,5 @@ final generationsList = [
   Generation('VI', 650, 721),
   Generation('VII', 722, 809),
   Generation('VIII', 810, 905),
-  Generation('IX', 906, 1010),
+  Generation('IX', 906, 1008),
 ];

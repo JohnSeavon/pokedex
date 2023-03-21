@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/src/models/pkmn_list.dart';
 import 'package:pokedex/src/widgets/pkmn_list_widget.dart';
 
 import '../models/generation.dart';
+import '../models/pkmn_list.dart';
 
 class PkmnListPage extends StatelessWidget {
   const PkmnListPage({super.key});

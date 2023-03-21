@@ -1,9 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:pokedex/src/models/generate_pkmn.dart';
+import 'package:pokedex/src/models/get_pokemon.dart';
 
 import '../models/pkmn.dart';
+import '../utils/get_color.dart';
+import '../widgets/type_widget.dart';
 
 class PkmnDetailPage extends StatelessWidget {
   const PkmnDetailPage({super.key});
@@ -11,7 +13,8 @@ class PkmnDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pkmn = ModalRoute.of(context)!.settings.arguments as Pkmn;
-    final generatePkmn = GeneratePkmn(url: pkmn.url);
+    final getPokemon = GetPokemon(url: pkmn.url);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -27,7 +30,7 @@ class PkmnDetailPage extends StatelessWidget {
         ],
       ),
       body: FutureBuilder(
-        future: generatePkmn.generatePkmn(),
+        future: getPokemon.generatePkmn(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -36,9 +39,24 @@ class PkmnDetailPage extends StatelessWidget {
               child: Text('Sorry, an unexpected error occurred. ${snapshot.error}'),
             );
           } else {
+            final colorType = getType(getPokemon.pokemon.typesOfPokemon[0].types.name);
             return SingleChildScrollView(
               child: Stack(
                 children: [
+                  Container(
+                    height: 250,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        stops: const [0.5, 1],
+                        colors: [
+                          colorType.color,
+                          Colors.white,
+                        ],
+                      ),
+                    ),
+                  ),
                   Column(
                     children: [
                       const SizedBox(height: 200),
@@ -49,7 +67,7 @@ class PkmnDetailPage extends StatelessWidget {
                               padding: const EdgeInsets.only(top: 35),
                               width: double.infinity,
                               child: Text(
-                                generatePkmn.detailPkmn.capitalize(generatePkmn.detailPkmn.name),
+                                getPokemon.pokemon.capitalize(getPokemon.pokemon.name),
                                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                       color: Theme.of(context).colorScheme.outline,
                                       fontWeight: FontWeight.bold,
@@ -65,18 +83,35 @@ class PkmnDetailPage extends StatelessWidget {
                                   Row(
                                     children: [
                                       const Icon(Icons.scale),
-                                      Text('Weight: ${generatePkmn.detailPkmn.weight.toString()}'),
+                                      Text('Weight: ${getPokemon.pokemon.weight.toString()}'),
                                     ],
                                   ),
                                   Row(
                                     children: [
                                       const Icon(Icons.height),
-                                      Text('Height: ${generatePkmn.detailPkmn.height.toString()}'),
+                                      Text('Height: ${getPokemon.pokemon.height.toString()}'),
                                     ],
                                   ),
                                 ],
                               ),
                             ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                TypeWidget(
+                                  getPokemon.pokemon.typesOfPokemon[0].types.name,
+                                ),
+                                if (getPokemon.pokemon.typesOfPokemon.length == 2)
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                if (getPokemon.pokemon.typesOfPokemon.length == 2)
+                                  TypeWidget(
+                                    getPokemon.pokemon.typesOfPokemon[1].types.name,
+                                  ),
+                              ],
+                            ),
+                            const SizedBox(height: 10)
                           ],
                         ),
                       ),
@@ -108,7 +143,7 @@ class PkmnDetailPage extends StatelessWidget {
                                 child: ColorFiltered(
                                   colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcATop),
                                   child: Image.network(
-                                    generatePkmn.detailPkmn.getOficialArtUrl(generatePkmn.detailPkmn.id),
+                                    getPokemon.pokemon.getImageUrl(),
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -117,7 +152,7 @@ class PkmnDetailPage extends StatelessWidget {
                           ),
                         ),
                         Image.network(
-                          generatePkmn.detailPkmn.getOficialArtUrl(generatePkmn.detailPkmn.id),
+                          getPokemon.pokemon.getImageUrl(),
                           fit: BoxFit.contain,
                         ),
                       ],
