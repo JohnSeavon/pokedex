@@ -26,7 +26,7 @@ class PkmnListWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Image.network(
-                pkmn.getImageUrl(pkmn.id),
+                pkmn.getSpriteUrl(),
                 width: 70,
                 height: 70,
                 errorBuilder: (context, error, stackTrace) {

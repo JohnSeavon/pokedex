@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 ThemeData get lightTheme => ThemeData(
       useMaterial3: true,
       colorScheme: _lightColorScheme,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         centerTitle: true,
-        backgroundColor: _lightColorScheme.primaryContainer,
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: _lightColorScheme.primary,
