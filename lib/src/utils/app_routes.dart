@@ -1,7 +1,6 @@
-import 'package:pokedex/src/pages/generations_grid_page.dart';
-import 'package:pokedex/src/pages/pkmn_list_page.dart';
-
-import '../pages/pkmn_detail_page.dart';
+import 'package:pokedex/src/pages/home/generations_grid_page.dart';
+import 'package:pokedex/src/pages/pkmn_list/pkmn_list_page.dart';
+import 'package:pokedex/src/pages/pokemon/pkmn_detail_page.dart';
 
 class AppRoutes {
   static const home = '/';

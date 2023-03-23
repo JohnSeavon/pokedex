@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/src/data/models/url_pokemon_model.dart';
 
-import '../models/pkmn.dart';
-import '../utils/app_routes.dart';
+import '../../../utils/app_routes.dart';
+import '../../../utils/pkmn_utils.dart';
 
 class PkmnListWidget extends StatelessWidget {
-  final Pkmn pkmn;
+  final UrlPokemonModel pkmn;
   const PkmnListWidget(this.pkmn, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    const errorImage = 'https://raw.githubusercontent.com/hungps/flutter_pokedex_db/master/sprites/pokemon/0.png';
-
     return Card(
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
@@ -26,12 +25,12 @@ class PkmnListWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Image.network(
-                pkmn.getSpriteUrl(),
+                getSpriteUrl(pkmn.id),
                 width: 70,
                 height: 70,
                 errorBuilder: (context, error, stackTrace) {
                   return Image.network(
-                    errorImage,
+                    getSpriteUrl(0),
                     width: 70,
                     height: 70,
                   );
@@ -42,7 +41,7 @@ class PkmnListWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  pkmn.capitalize(pkmn.name),
+                  capitalize(pkmn.name),
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/src/utils/app_routes.dart';
 
-import '../models/generation.dart';
+import '../../../data/models/generation.dart';
 
 class GenerationGridItem extends StatelessWidget {
   final Generation generation;

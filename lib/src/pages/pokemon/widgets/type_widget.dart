@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/get_color.dart';
+import '../../../utils/get_color.dart';
 
 class TypeWidget extends StatelessWidget {
   final String type;

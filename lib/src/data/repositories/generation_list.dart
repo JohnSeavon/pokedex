@@ -1,4 +1,4 @@
-import 'generation.dart';
+import '../models/generation.dart';
 
 final generationsList = [
   Generation('I', 1, 151),
