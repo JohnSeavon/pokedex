@@ -11,7 +11,15 @@ class PokemonStore {
   final ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
 
   // Variável reativa para o state
-  final ValueNotifier<PokemonModel> state = ValueNotifier<PokemonModel>(PokemonModel(id: 0, name: '', height: 0, weight: 0, typesOfPokemon: []));
+  final ValueNotifier<PokemonModel> state = ValueNotifier<PokemonModel>(PokemonModel(
+    id: 0,
+    name: '',
+    height: 0,
+    weight: 0,
+    typesOfPokemon: [],
+    stats: [],
+    abilityList: [],
+  ));
 
   // Variável reativa para o erro
   final ValueNotifier<String> error = ValueNotifier<String>('');

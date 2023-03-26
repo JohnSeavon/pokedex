@@ -1,6 +1,6 @@
 import 'package:pokedex/src/pages/home/generations_grid_page.dart';
 import 'package:pokedex/src/pages/pkmn_list/pkmn_list_page.dart';
-import 'package:pokedex/src/pages/pokemon/pkmn_detail_page.dart';
+import 'package:pokedex/src/pages/pokemon/pokemon_info_page.dart';
 
 class AppRoutes {
   static const home = '/';
@@ -10,6 +10,6 @@ class AppRoutes {
   static final routes = {
     home: (context) => const GenerationsGridPage(),
     pkmnList: (context) => const PkmnListPage(),
-    pkmnDetail: (context) => const PkmnDetailPage(),
+    pkmnDetail: (context) => const PokemonInfoPage(),
   };
 }

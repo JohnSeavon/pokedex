@@ -3,19 +3,20 @@ import 'package:flutter/material.dart';
 ThemeData get lightTheme => ThemeData(
       useMaterial3: true,
       colorScheme: _lightColorScheme,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         centerTitle: true,
         backgroundColor: Colors.red,
-        foregroundColor: Colors.white,
+        foregroundColor: _lightColorScheme.background,
       ),
     );
 
 ThemeData get darkTheme => ThemeData(
       useMaterial3: true,
       colorScheme: _darkColorScheme,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         centerTitle: true,
         backgroundColor: Colors.red,
+        foregroundColor: _darkColorScheme.background,
       ),
     );
 
