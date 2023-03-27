@@ -18,7 +18,7 @@ class PokemonListStore {
 
   PokemonListStore({required this.repository});
 
-  Future getUrlPokemons() async {
+  Future getPokemonList() async {
     isLoading.value = true;
 
     try {

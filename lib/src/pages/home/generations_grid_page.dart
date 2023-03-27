@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../data/models/generation.dart';
 import '../../data/repositories/generation_list.dart';
+import '../../shared/widgets/theme_change_icon.dart';
 import 'widgets/generation_grid_item.dart';
 
 class GenerationsGridPage extends StatelessWidget {
@@ -13,6 +14,9 @@ class GenerationsGridPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('PokéDex'),
+        actions: const [
+          ThemeChangeIcon(),
+        ],
       ),
       body: ListView.builder(
         padding: const EdgeInsets.symmetric(

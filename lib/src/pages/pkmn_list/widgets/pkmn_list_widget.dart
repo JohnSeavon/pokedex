@@ -47,11 +47,14 @@ class PkmnListWidget extends StatelessWidget {
                   pokemon.name,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w600,
+                        color: Theme.of(context).colorScheme.background,
                       ),
                 ),
                 Text(
                   '#${(pokemon.id.toString().padLeft(4, '0'))}',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.background,
+                      ),
                 ),
               ],
             )

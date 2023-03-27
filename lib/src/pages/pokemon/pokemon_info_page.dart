@@ -5,6 +5,7 @@ import 'package:pokedex/src/shared/pkmn_utils.dart';
 
 import '../../data/models/pokemon.dart';
 import '../../shared/get_color.dart';
+import '../../shared/widgets/theme_change_icon.dart';
 import 'widgets/base_stats.dart';
 import 'widgets/sprites_card.dart';
 import 'widgets/type_widget.dart';
@@ -67,12 +68,7 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
             Icons.favorite_border_sharp,
           ),
           SizedBox(width: 10),
-          Padding(
-            padding: EdgeInsets.only(right: 20),
-            child: Icon(
-              Icons.brightness_4_outlined,
-            ),
-          ),
+          ThemeChangeIcon(),
         ],
       ),
       // ! Stack
@@ -216,11 +212,11 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
           ),
           // ! Pokemon Info
           DraggableScrollableSheet(
-            initialChildSize: (isPortrait == Orientation.portrait) ? 0.6 : 0.4,
-            minChildSize: (isPortrait == Orientation.portrait) ? 0.6 : 0.4,
+            initialChildSize: (isPortrait == Orientation.portrait) ? 0.59 : 0.38,
+            minChildSize: (isPortrait == Orientation.portrait) ? 0.59 : 0.38,
             maxChildSize: (isPortrait == Orientation.portrait) ? 0.9 : 0.8,
             snap: true,
-            snapSizes: [((isPortrait == Orientation.portrait) ? 0.6 : 0.4), ((isPortrait == Orientation.portrait) ? 0.9 : 0.8)],
+            snapSizes: [((isPortrait == Orientation.portrait) ? 0.59 : 0.38), ((isPortrait == Orientation.portrait) ? 0.9 : 0.8)],
             builder: (context, scrollController) => ClipRRect(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(42),

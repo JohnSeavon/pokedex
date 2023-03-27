@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../data/models/generation.dart';
 import '../../data/repositories/pokemon_list_repository.dart';
 import '../../shared/stores/pokemon_list_store.dart';
+import '../../shared/widgets/theme_change_icon.dart';
 import 'widgets/pkmn_list_widget.dart';
 
 class PkmnListPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _PkmnListPageState extends State<PkmnListPage> {
   @override
   void initState() {
     super.initState();
-    store.getUrlPokemons();
+    store.getPokemonList();
   }
 
   @override
@@ -31,6 +32,9 @@ class _PkmnListPageState extends State<PkmnListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Generation ${generation.generation}'),
+        actions: const [
+          ThemeChangeIcon(),
+        ],
       ),
       body: AnimatedBuilder(
         animation: Listenable.merge([
