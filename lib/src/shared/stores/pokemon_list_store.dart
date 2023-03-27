@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/src/data/http/exceptions.dart';
-import 'package:pokedex/src/data/models/url_pokemon_model.dart';
-import 'package:pokedex/src/data/repositories/url_pokemon_repository.dart';
 
-class UrlPokemonStore {
-  final IUrlPokemonRepository repository;
+import '../../data/http/exceptions.dart';
+import '../../data/models/pokemon.dart';
+import '../../data/repositories/pokemon_list_repository.dart';
+
+class PokemonListStore {
+  final PokemonListRepository repository;
 
   // Variável reativa para o loading
   final ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
 
   // Variável reativa para o state
-  final ValueNotifier<List<UrlPokemonModel>> state = ValueNotifier<List<UrlPokemonModel>>([]);
+  final ValueNotifier<List<PokemonModel>> state = ValueNotifier<List<PokemonModel>>([]);
 
   // Variável reativa para o erro
   final ValueNotifier<String> error = ValueNotifier<String>('');
 
-  UrlPokemonStore({required this.repository});
+  PokemonListStore({required this.repository});
 
   Future getUrlPokemons() async {
     isLoading.value = true;
 
     try {
-      final result = await repository.getUrlPokemons();
+      final result = await repository.getPokemonList();
       state.value = result;
     } on NotFoundException catch (e) {
       error.value = e.message;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/pkmn_utils.dart';
+import '../../../shared/pkmn_utils.dart';
 
 class SpritesCard extends StatelessWidget {
   const SpritesCard({

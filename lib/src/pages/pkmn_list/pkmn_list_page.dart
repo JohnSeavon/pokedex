@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../data/http/http_client.dart';
-import '../../data/repositories/url_pokemon_repository.dart';
 import '../../data/models/generation.dart';
+import '../../data/repositories/pokemon_list_repository.dart';
+import '../../shared/stores/pokemon_list_store.dart';
 import 'widgets/pkmn_list_widget.dart';
-import 'stores/url_pokemon_store.dart';
 
 class PkmnListPage extends StatefulWidget {
   const PkmnListPage({super.key});
@@ -14,10 +13,8 @@ class PkmnListPage extends StatefulWidget {
 }
 
 class _PkmnListPageState extends State<PkmnListPage> {
-  final UrlPokemonStore store = UrlPokemonStore(
-    repository: UrlPokemonRepository(
-      client: HttpClient(),
-    ),
+  final PokemonListStore store = PokemonListStore(
+    repository: PokemonListRepository(),
   );
 
   @override

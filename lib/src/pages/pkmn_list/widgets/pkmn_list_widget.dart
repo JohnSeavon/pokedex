@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/src/data/models/url_pokemon_model.dart';
 
-import '../../../utils/app_routes.dart';
-import '../../../utils/pkmn_utils.dart';
+import '../../../data/models/pokemon.dart';
+import '../../../shared/app_routes.dart';
+import '../../../shared/get_color.dart';
+import '../../../shared/pkmn_utils.dart';
 
 class PkmnListWidget extends StatelessWidget {
-  final UrlPokemonModel pkmn;
-  const PkmnListWidget(this.pkmn, {super.key});
+  final PokemonModel pokemon;
+  const PkmnListWidget(this.pokemon, {super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorType = getType(pokemon.types.first);
     return Card(
+      color: colorType.color,
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         onTap: () {
           Navigator.of(context).pushNamed(
             AppRoutes.pkmnDetail,
-            arguments: pkmn,
+            arguments: pokemon,
           );
         },
         child: Row(
@@ -25,7 +28,7 @@ class PkmnListWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Image.network(
-                getSpriteUrl(pkmn.id),
+                getSpriteUrl(pokemon.id),
                 width: 70,
                 height: 70,
                 errorBuilder: (context, error, stackTrace) {
@@ -41,13 +44,13 @@ class PkmnListWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  capitalize(pkmn.name),
+                  pokemon.name,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
                 ),
                 Text(
-                  '#${(pkmn.id.toString().padLeft(4, '0'))}',
+                  '#${(pokemon.id.toString().padLeft(4, '0'))}',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],

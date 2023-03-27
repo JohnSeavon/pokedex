@@ -28,41 +28,41 @@ enum ColorTypes {
 
 ColorTypes getType(String type) {
   switch (type) {
-    case 'normal':
+    case 'Normal':
       return ColorTypes.normal;
-    case 'fighting':
+    case 'Fighting':
       return ColorTypes.fighting;
-    case 'flying':
+    case 'Flying':
       return ColorTypes.flying;
-    case 'poison':
+    case 'Poison':
       return ColorTypes.poison;
-    case 'ground':
+    case 'Ground':
       return ColorTypes.ground;
-    case 'rock':
+    case 'Rock':
       return ColorTypes.rock;
-    case 'bug':
+    case 'Bug':
       return ColorTypes.bug;
-    case 'ghost':
+    case 'Ghost':
       return ColorTypes.ghost;
-    case 'steel':
+    case 'Steel':
       return ColorTypes.steel;
-    case 'fire':
+    case 'Fire':
       return ColorTypes.fire;
-    case 'water':
+    case 'Water':
       return ColorTypes.water;
-    case 'grass':
+    case 'Grass':
       return ColorTypes.grass;
-    case 'electric':
+    case 'Electric':
       return ColorTypes.electric;
-    case 'psychic':
+    case 'Psychic':
       return ColorTypes.psychic;
-    case 'ice':
+    case 'Ice':
       return ColorTypes.ice;
-    case 'dragon':
+    case 'Dragon':
       return ColorTypes.dragon;
-    case 'dark':
+    case 'Dark':
       return ColorTypes.dark;
-    case 'fairy':
+    case 'Fairy':
       return ColorTypes.fairy;
     default:
       return ColorTypes.unknown;

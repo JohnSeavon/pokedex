@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/src/utils/app_routes.dart';
+import 'package:pokedex/src/shared/app_routes.dart';
 
 import '../../../data/models/generation.dart';
 

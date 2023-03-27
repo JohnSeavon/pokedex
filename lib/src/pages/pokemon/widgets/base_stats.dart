@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../data/models/pokemon.dart';
+
 class BaseStats extends StatelessWidget {
   const BaseStats({
     super.key,
@@ -7,7 +9,7 @@ class BaseStats extends StatelessWidget {
     required this.color,
   });
 
-  final List<int> stats;
+  final Stat stats;
   final Color color;
 
   @override
@@ -61,12 +63,12 @@ class BaseStats extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(stats[0].toString()),
-                    Text(stats[1].toString()),
-                    Text(stats[2].toString()),
-                    Text(stats[3].toString()),
-                    Text(stats[4].toString()),
-                    Text(stats[5].toString()),
+                    Text(stats.hp.toString()),
+                    Text(stats.attack.toString()),
+                    Text(stats.defense.toString()),
+                    Text(stats.spAttack.toString()),
+                    Text(stats.spDefense.toString()),
+                    Text(stats.speed.toString()),
                   ],
                 ),
               ),
@@ -77,12 +79,12 @@ class BaseStats extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      LinearProgressIndicator(value: stats[0] / 255, color: color),
-                      LinearProgressIndicator(value: stats[1] / 255, color: color),
-                      LinearProgressIndicator(value: stats[2] / 255, color: color),
-                      LinearProgressIndicator(value: stats[3] / 255, color: color),
-                      LinearProgressIndicator(value: stats[4] / 255, color: color),
-                      LinearProgressIndicator(value: stats[5] / 255, color: color),
+                      LinearProgressIndicator(value: stats.hp / 255, color: color),
+                      LinearProgressIndicator(value: stats.attack / 255, color: color),
+                      LinearProgressIndicator(value: stats.defense / 255, color: color),
+                      LinearProgressIndicator(value: stats.spAttack / 255, color: color),
+                      LinearProgressIndicator(value: stats.spDefense / 255, color: color),
+                      LinearProgressIndicator(value: stats.speed / 255, color: color),
                     ],
                   ),
                 ),
