@@ -31,11 +31,18 @@ class _PkmnListPageState extends State<PkmnListPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Generation ${generation.generation}'),
+        title: Text(
+          'Generation ${generation.generation}',
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.background,
+              ),
+        ),
         actions: const [
           ThemeChangeIcon(),
         ],
       ),
+      backgroundColor: Colors.red,
       body: AnimatedBuilder(
         animation: Listenable.merge([
           store.isLoading,
@@ -56,15 +63,25 @@ class _PkmnListPageState extends State<PkmnListPage> {
               child: Text('The list is empty'),
             );
           } else {
-            return ListView.builder(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 20,
+            return Container(
+              margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.background,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(15),
+                ),
               ),
-              itemCount: generation.total,
-              itemBuilder: (context, index) {
-                return PkmnListWidget(store.state.value[index + initial]);
-              },
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 10,
+                ),
+                itemCount: generation.total,
+                itemBuilder: (context, index) {
+                  return PkmnListWidget(store.state.value[index + initial]);
+                },
+              ),
             );
           }
         },

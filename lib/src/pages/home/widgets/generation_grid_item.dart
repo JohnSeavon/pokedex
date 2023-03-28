@@ -13,6 +13,11 @@ class GenerationGridItem extends StatelessWidget {
     if (generation.generation == 'V') {
       generationV = true;
     }
+
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    Orientation isPortrait = MediaQuery.of(context).orientation;
+
     return Card(
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
@@ -20,7 +25,7 @@ class GenerationGridItem extends StatelessWidget {
           Navigator.of(context).pushNamed(AppRoutes.pkmnList, arguments: generation);
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -28,37 +33,36 @@ class GenerationGridItem extends StatelessWidget {
                 clipBehavior: Clip.none,
                 children: [
                   Positioned(
-                    right: 80,
+                    right: (isPortrait == Orientation.portrait) ? 80 : width * 0.07,
                     bottom: 20,
                     child: Image.network(
                       (generationV)
                           ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId + 1}.png'
                           : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId}.png',
-                      width: 90,
-                      height: 90,
+                      width: (isPortrait == Orientation.portrait) ? width * 0.22 : 90,
+                      height: (isPortrait == Orientation.portrait) ? 90 : height * 0.18,
                     ),
                   ),
                   Positioned(
-                    left: 80,
+                    left: (isPortrait == Orientation.portrait) ? 80 : width * 0.07,
                     bottom: 20,
                     child: Image.network(
                       (generationV)
                           ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId + 7}.png'
                           : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 6}.png',
-                      width: 90,
-                      height: 90,
+                      width: (isPortrait == Orientation.portrait) ? width * 0.22 : 90,
+                      height: (isPortrait == Orientation.portrait) ? 90 : height * 0.18,
                     ),
                   ),
                   Image.network(
                     (generationV)
                         ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId + 4}.png'
                         : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 3}.png',
-                    width: 110,
-                    height: 110,
+                    width: (isPortrait == Orientation.portrait) ? width * 0.27 : 110,
+                    height: (isPortrait == Orientation.portrait) ? 110 : height * 0.20,
                   ),
                 ],
               ),
-              const SizedBox(height: 5),
               Text(
                 'Generation ${generation.generation}',
                 textAlign: TextAlign.center,

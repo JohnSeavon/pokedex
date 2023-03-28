@@ -25,3 +25,7 @@ String getImageUrl(int id) {
 String getShinyImageUrl(int id) {
   return 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/$id.png';
 }
+
+String getPokemonIconUrl(int id) {
+  return 'https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/${id.toString().padLeft(3, '0')}.png';
+}
