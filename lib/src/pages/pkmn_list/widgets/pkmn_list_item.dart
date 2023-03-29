@@ -4,9 +4,9 @@ import '../../../data/models/pokemon.dart';
 import '../../../shared/app_routes.dart';
 import '../../../shared/pkmn_utils.dart';
 
-class PkmnListWidget extends StatelessWidget {
+class PkmnListItem extends StatelessWidget {
   final PokemonModel pokemon;
-  const PkmnListWidget(this.pokemon, {super.key});
+  const PkmnListItem(this.pokemon, {super.key});
 
   @override
   Widget build(BuildContext context) {
