@@ -1,18 +1,36 @@
 import 'dart:convert';
 
-import 'poke_data.dart';
+import 'package:pokedex/src/data/http/http_client.dart';
+
 import '../models/pokemon.dart';
 
-class PokemonListRepository {
+abstract class IPokemonListRepository {
+  Future<List<PokemonModel>> getPokemonList();
+}
+
+class PokemonListRepository implements IPokemonListRepository {
+  final IDataSourceClient client;
+
+  PokemonListRepository({
+    required this.client,
+  });
+
+  @override
   Future<List<PokemonModel>> getPokemonList() async {
-    final List<PokemonModel> pokemonList = [];
+    final String response = await client.get(source: 'assets/data/poke_data.json');
 
-    final body = jsonDecode(pokeData);
+    if (response.isNotEmpty) {
+      final List<PokemonModel> pokemonList = [];
 
-    body['results'].map((item) {
-      final PokemonModel pokemon = PokemonModel.fromJson(item);
-      pokemonList.add(pokemon);
-    }).toList();
-    return pokemonList;
+      final body = jsonDecode(response);
+
+      body['results'].map((item) {
+        final PokemonModel pokemon = PokemonModel.fromJson(item);
+        pokemonList.add(pokemon);
+      }).toList();
+      return pokemonList;
+    } else {
+      throw Exception('Not found');
+    }
   }
 }

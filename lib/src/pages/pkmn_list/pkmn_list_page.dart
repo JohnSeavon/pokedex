@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../data/http/http_client.dart';
 import '../../data/models/generation.dart';
 import '../../data/repositories/pokemon_list_repository.dart';
 import '../../shared/stores/pokemon_list_store.dart';
@@ -15,7 +16,9 @@ class PkmnListPage extends StatefulWidget {
 
 class _PkmnListPageState extends State<PkmnListPage> {
   final PokemonListStore store = PokemonListStore(
-    repository: PokemonListRepository(),
+    repository: PokemonListRepository(
+      client: LocalSourceClient(),
+    ),
   );
 
   @override
@@ -43,36 +46,36 @@ class _PkmnListPageState extends State<PkmnListPage> {
         ],
       ),
       backgroundColor: Colors.red,
-      body: AnimatedBuilder(
-        animation: Listenable.merge([
-          store.isLoading,
-          store.error,
-          store.state,
-        ]),
-        builder: (context, child) {
-          if (store.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (store.error.value.isNotEmpty) {
-            return const Center(
-              child: Text('Sorry, an unexpected error occurred'),
-            );
-          }
-          if (store.state.value.isEmpty) {
-            return const Center(
-              child: Text('The list is empty'),
-            );
-          } else {
-            return Container(
-              margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.background,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(15),
-                ),
-              ),
-              child: ListView.builder(
+      body: Container(
+        margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.background,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(15),
+          ),
+        ),
+        child: AnimatedBuilder(
+          animation: Listenable.merge([
+            store.isLoading,
+            store.error,
+            store.state,
+          ]),
+          builder: (context, child) {
+            if (store.isLoading.value) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (store.error.value.isNotEmpty) {
+              return const Center(
+                child: Text('Sorry, an unexpected error occurred'),
+              );
+            }
+            if (store.state.value.isEmpty) {
+              return const Center(
+                child: Text('The list is empty'),
+              );
+            } else {
+              return ListView.builder(
                 padding: const EdgeInsets.symmetric(
                   vertical: 10,
                   horizontal: 10,
@@ -81,10 +84,10 @@ class _PkmnListPageState extends State<PkmnListPage> {
                 itemBuilder: (context, index) {
                   return PkmnListWidget(store.state.value[index + initial]);
                 },
-              ),
-            );
-          }
-        },
+              );
+            }
+          },
+        ),
       ),
     );
   }

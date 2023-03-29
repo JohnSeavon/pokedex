@@ -4,6 +4,8 @@ ThemeData get lightTheme => ThemeData(
       useMaterial3: true,
       colorScheme: _lightColorScheme,
       appBarTheme: AppBarTheme(
+        elevation: 0,
+        scrolledUnderElevation: 0,
         centerTitle: true,
         backgroundColor: Colors.red,
         foregroundColor: _lightColorScheme.background,
@@ -14,6 +16,8 @@ ThemeData get darkTheme => ThemeData(
       useMaterial3: true,
       colorScheme: _darkColorScheme,
       appBarTheme: AppBarTheme(
+        elevation: 0,
+        scrolledUnderElevation: 0,
         centerTitle: true,
         backgroundColor: Colors.red,
         foregroundColor: _darkColorScheme.background,

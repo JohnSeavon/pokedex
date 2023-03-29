@@ -5,7 +5,7 @@ import '../../data/models/pokemon.dart';
 import '../../data/repositories/pokemon_list_repository.dart';
 
 class PokemonListStore {
-  final PokemonListRepository repository;
+  final IPokemonListRepository repository;
 
   // Variável reativa para o loading
   final ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
