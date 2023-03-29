@@ -7,7 +7,7 @@ ThemeData get lightTheme => ThemeData(
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
-        backgroundColor: Colors.red,
+        backgroundColor: const Color(0xFFDC0A2D),
         foregroundColor: _lightColorScheme.background,
       ),
     );
@@ -19,7 +19,7 @@ ThemeData get darkTheme => ThemeData(
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
-        backgroundColor: Colors.red,
+        backgroundColor: const Color(0xFFDC0A2D),
         foregroundColor: _darkColorScheme.background,
       ),
     );

@@ -4,7 +4,7 @@ import '../../data/http/exceptions.dart';
 import '../../data/models/pokemon.dart';
 import '../../data/repositories/pokemon_list_repository.dart';
 
-class PokemonListStore {
+class PokemonListStore extends ChangeNotifier {
   final IPokemonListRepository repository;
 
   // Variável reativa para o loading

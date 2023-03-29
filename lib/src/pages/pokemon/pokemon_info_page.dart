@@ -2,10 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:pokedex/src/shared/pkmn_utils.dart';
+import 'package:provider/provider.dart';
 
 import '../../data/models/pokemon.dart';
+import '../../shared/app_routes.dart';
 import '../../shared/get_color.dart';
-import '../../shared/widgets/theme_change_icon.dart';
+import '../../shared/stores/pokemon_list_store.dart';
 import 'widgets/base_stats.dart';
 import 'widgets/sprites_card.dart';
 import 'widgets/type_widget.dart';
@@ -18,6 +20,8 @@ class PokemonInfoPage extends StatefulWidget {
 }
 
 class _PokemonInfoPageState extends State<PokemonInfoPage> {
+  late PokemonListStore store;
+
   bool isShiny = false;
 
   toggleShiny() {
@@ -33,11 +37,29 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
 
   @override
   Widget build(BuildContext context) {
+    nextPokemon(int id) {
+      final pokemon = store.state.value[id];
+      Navigator.of(context).pushReplacementNamed(
+        AppRoutes.pkmnDetail,
+        arguments: pokemon,
+      );
+    }
+
+    prevPokemon(int id) {
+      final pokemon = store.state.value[id - 2];
+      Navigator.of(context).pushReplacementNamed(
+        AppRoutes.pkmnDetail,
+        arguments: pokemon,
+      );
+    }
+
     final theme = Theme.of(context);
-    final pokemon = ModalRoute.of(context)!.settings.arguments as PokemonModel;
+    var pokemon = ModalRoute.of(context)!.settings.arguments as PokemonModel;
     final colorType = getType(pokemon.types.first);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
+    store = context.watch<PokemonListStore>();
 
     return Scaffold(
       backgroundColor: colorType.color,
@@ -84,12 +106,14 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
               ),
           ],
         ),
-        actions: const [
-          Icon(
-            Icons.favorite_border_sharp,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.favorite_border_sharp),
+            ),
           ),
-          SizedBox(width: 10),
-          ThemeChangeIcon(),
         ],
       ),
       // ! Stack
@@ -129,7 +153,7 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
               top: height * 0.3,
               left: 10,
               child: IconButton(
-                onPressed: null,
+                onPressed: () => prevPokemon(pokemon.id),
                 icon: Icon(Icons.chevron_left, color: theme.colorScheme.background.withOpacity(0.5)),
               ),
             ),
@@ -138,7 +162,7 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
               top: height * 0.3,
               right: 10,
               child: IconButton(
-                onPressed: null,
+                onPressed: () => nextPokemon(pokemon.id),
                 icon: Icon(Icons.chevron_right, color: theme.colorScheme.background.withOpacity(0.5)),
               ),
             ),
