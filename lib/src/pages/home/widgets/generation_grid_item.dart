@@ -16,10 +16,7 @@ class GenerationGridItem extends StatelessWidget {
     }
 
     final theme = Theme.of(context);
-
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    Orientation isPortrait = MediaQuery.of(context).orientation;
 
     return Card(
       child: InkWell(
@@ -36,27 +33,27 @@ class GenerationGridItem extends StatelessWidget {
                 clipBehavior: Clip.none,
                 children: [
                   Positioned(
-                    right: (isPortrait == Orientation.portrait) ? 80 : width * 0.07,
+                    right: 80,
                     bottom: 20,
                     child: Image.network(
                       getImageUrl(generation.initialId + ((generationV) ? 1 : 0)),
-                      width: (isPortrait == Orientation.portrait) ? width * 0.22 : 90,
-                      height: (isPortrait == Orientation.portrait) ? 90 : height * 0.18,
+                      width: width * 0.22,
+                      height: 90,
                     ),
                   ),
                   Positioned(
-                    left: (isPortrait == Orientation.portrait) ? 80 : width * 0.07,
+                    left: 80,
                     bottom: 20,
                     child: Image.network(
                       getImageUrl(generation.initialId + ((generationV) ? 7 : 6)),
-                      width: (isPortrait == Orientation.portrait) ? width * 0.22 : 90,
-                      height: (isPortrait == Orientation.portrait) ? 90 : height * 0.18,
+                      width: width * 0.22,
+                      height: 90,
                     ),
                   ),
                   Image.network(
                     getImageUrl(generation.initialId + ((generationV) ? 4 : 3)),
-                    width: (isPortrait == Orientation.portrait) ? width * 0.27 : 110,
-                    height: (isPortrait == Orientation.portrait) ? 110 : height * 0.20,
+                    width: width * 0.27,
+                    height: 110,
                   ),
                 ],
               ),

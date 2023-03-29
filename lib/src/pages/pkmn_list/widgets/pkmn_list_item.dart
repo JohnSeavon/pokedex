@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../data/models/pokemon.dart';
 import '../../../shared/app_routes.dart';
+import '../../../shared/get_color.dart';
 import '../../../shared/pkmn_utils.dart';
 
 class PkmnListItem extends StatelessWidget {
@@ -63,18 +64,38 @@ class PkmnListItem extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/images/types/${pokemon.types.first}.png',
-                      height: 25,
-                      fit: BoxFit.contain,
+                    Tooltip(
+                      message: pokemon.types.first,
+                      verticalOffset: -15,
+                      triggerMode: TooltipTriggerMode.tap,
+                      showDuration: const Duration(milliseconds: 800),
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(Radius.circular(15)),
+                        color: getType(pokemon.types.first).color,
+                      ),
+                      child: Image.asset(
+                        'assets/images/types/${pokemon.types.first}.png',
+                        height: 25,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                     if (pokemon.types.length == 2)
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: Image.asset(
-                          'assets/images/types/${pokemon.types.last}.png',
-                          height: 25,
-                          fit: BoxFit.contain,
+                        child: Tooltip(
+                          message: pokemon.types.last,
+                          verticalOffset: -15,
+                          triggerMode: TooltipTriggerMode.tap,
+                          showDuration: const Duration(milliseconds: 800),
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(Radius.circular(15)),
+                            color: getType(pokemon.types.last).color,
+                          ),
+                          child: Image.asset(
+                            'assets/images/types/${pokemon.types.last}.png',
+                            height: 25,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
                   ],

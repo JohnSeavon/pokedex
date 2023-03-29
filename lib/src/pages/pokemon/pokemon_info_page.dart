@@ -18,11 +18,11 @@ class PokemonInfoPage extends StatefulWidget {
 }
 
 class _PokemonInfoPageState extends State<PokemonInfoPage> {
-  bool selectedShiny = false;
+  bool isShiny = false;
 
-  isSelectedShiny() {
+  toggleShiny() {
     setState(() {
-      selectedShiny = !selectedShiny;
+      isShiny = !isShiny;
     });
   }
 
@@ -38,7 +38,6 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
     final colorType = getType(pokemon.types.first);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    Orientation isPortrait = MediaQuery.of(context).orientation;
 
     return Scaffold(
       backgroundColor: colorType.color,
@@ -105,7 +104,7 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
               child: Image.asset(
                 'assets/images/pokeball.png',
                 width: width * 0.8,
-                height: (isPortrait == Orientation.portrait) ? width : height * 0.4,
+                height: width,
                 fit: BoxFit.contain,
                 alignment: Alignment.topRight,
               ),
@@ -113,7 +112,7 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
           ),
           // ! fake top draggable
           Container(
-            margin: EdgeInsets.only(top: (isPortrait == Orientation.portrait) ? height * 0.36 : height * 0.5),
+            margin: EdgeInsets.only(top: height * 0.36),
             width: width,
             height: height,
             decoration: BoxDecoration(
@@ -127,7 +126,7 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
           // ! prev and next buttons
           if (pokemon.id != 1)
             Positioned(
-              top: (isPortrait == Orientation.portrait) ? height * 0.3 : height * 0.4,
+              top: height * 0.3,
               left: 10,
               child: IconButton(
                 onPressed: null,
@@ -136,7 +135,7 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
             ),
           if (pokemon.id != 898)
             Positioned(
-              top: (isPortrait == Orientation.portrait) ? height * 0.3 : height * 0.4,
+              top: height * 0.3,
               right: 10,
               child: IconButton(
                 onPressed: null,
@@ -149,8 +148,8 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: (isPortrait == Orientation.portrait) ? height * 0.4 : height * 0.6,
-                width: (isPortrait == Orientation.portrait) ? width * 0.5 : height * 0.4,
+                height: height * 0.4,
+                width: width * 0.5,
                 child: Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
@@ -187,9 +186,9 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => isSelectedShiny(),
+                      onTap: () => toggleShiny(),
                       child: Image.network(
-                        (selectedShiny) ? getShinyImageUrl(pokemon.id) : getImageUrl(pokemon.id),
+                        (isShiny) ? getShinyImageUrl(pokemon.id) : getImageUrl(pokemon.id),
                         fit: BoxFit.contain,
                         alignment: Alignment.bottomCenter,
                       ),
@@ -201,14 +200,14 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
           ),
           // ! shiny button and pokemon id
           Container(
-            margin: EdgeInsets.only(top: (isPortrait == Orientation.portrait) ? 100 : 90),
+            margin: const EdgeInsets.only(top: 100),
             padding: const EdgeInsets.only(left: 20),
             child: TextButton(
-              onPressed: isSelectedShiny,
+              onPressed: toggleShiny,
               style: TextButton.styleFrom(
-                foregroundColor: selectedShiny ? Color.lerp(theme.colorScheme.background, Colors.black, 0.1) : theme.colorScheme.background,
-                backgroundColor: selectedShiny ? Color.lerp(colorType.color, Colors.black, 0.2) : Color.lerp(colorType.color, Colors.white, 0.15),
-                shadowColor: selectedShiny ? Colors.white : Colors.black54,
+                foregroundColor: isShiny ? Color.lerp(theme.colorScheme.background, Colors.black, 0.1) : theme.colorScheme.background,
+                backgroundColor: isShiny ? Color.lerp(colorType.color, Colors.black, 0.2) : Color.lerp(colorType.color, Colors.white, 0.15),
+                shadowColor: isShiny ? Colors.white : Colors.black54,
                 elevation: 1,
               ),
               child: const Icon(Icons.auto_awesome_outlined),
@@ -216,11 +215,11 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
           ),
           // ! Pokemon Info
           DraggableScrollableSheet(
-            initialChildSize: (isPortrait == Orientation.portrait) ? 0.59 : 0.38,
-            minChildSize: (isPortrait == Orientation.portrait) ? 0.59 : 0.38,
-            maxChildSize: (isPortrait == Orientation.portrait) ? 0.9 : 0.8,
+            initialChildSize: 0.59,
+            minChildSize: 0.59,
+            maxChildSize: 0.9,
             snap: true,
-            snapSizes: [((isPortrait == Orientation.portrait) ? 0.59 : 0.38), ((isPortrait == Orientation.portrait) ? 0.9 : 0.8)],
+            snapSizes: const [0.59, 0.9],
             builder: (context, scrollController) => ClipRRect(
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(42),

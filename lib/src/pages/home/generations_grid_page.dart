@@ -11,13 +11,7 @@ class GenerationsGridPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Generation> list = generationsList;
-
     final theme = Theme.of(context);
-
-    final size = MediaQuery.of(context).size;
-    final padding = MediaQuery.of(context).padding;
-    final height = size.height - padding.top - padding.bottom;
-    Orientation isPortrait = MediaQuery.of(context).orientation;
 
     return Scaffold(
       appBar: AppBar(
@@ -42,25 +36,14 @@ class GenerationsGridPage extends StatelessWidget {
               Radius.circular(15),
             ),
           ),
-          child: (isPortrait == Orientation.portrait)
-              ? ListView.builder(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 10,
-                  ),
-                  itemCount: list.length,
-                  itemBuilder: (context, index) => GenerationGridItem(list[index]),
-                )
-              : GridView.builder(
-                  itemCount: list.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    mainAxisSpacing: 5,
-                    crossAxisSpacing: 5,
-                    mainAxisExtent: ((height - 90) * 0.50),
-                  ),
-                  itemBuilder: (context, index) => GenerationGridItem(list[index]),
-                )),
+          child: ListView.builder(
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 10,
+            ),
+            itemCount: list.length,
+            itemBuilder: (context, index) => GenerationGridItem(list[index]),
+          )),
     );
   }
 }
