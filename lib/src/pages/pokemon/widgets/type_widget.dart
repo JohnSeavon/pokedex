@@ -9,6 +9,7 @@ class TypeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorType = getType(type);
+    final theme = Theme.of(context);
 
     return Container(
       alignment: Alignment.center,
@@ -19,10 +20,10 @@ class TypeWidget extends StatelessWidget {
       ),
       child: Text(
         type,
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              fontWeight: FontWeight.w400,
-              color: Colors.white,
-            ),
+        style: theme.textTheme.bodyMedium?.copyWith(
+          fontWeight: FontWeight.w600,
+          color: theme.colorScheme.background,
+        ),
       ),
     );
   }

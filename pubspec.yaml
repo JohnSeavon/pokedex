@@ -61,8 +61,26 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/pokeball.png
     - assets/data/poke_data.json
+    - assets/images/pokeball.png
+    - assets/images/types/Normal.png
+    - assets/images/types/Fighting.png
+    - assets/images/types/Flying.png
+    - assets/images/types/Poison.png
+    - assets/images/types/Ground.png
+    - assets/images/types/Rock.png
+    - assets/images/types/Bug.png
+    - assets/images/types/Ghost.png
+    - assets/images/types/Steel.png
+    - assets/images/types/Fire.png
+    - assets/images/types/Water.png
+    - assets/images/types/Grass.png
+    - assets/images/types/Electric.png
+    - assets/images/types/Psychic.png
+    - assets/images/types/Ice.png
+    - assets/images/types/Dragon.png
+    - assets/images/types/Dark.png
+    - assets/images/types/Fairy.png
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
@@ -81,12 +99,12 @@ flutter:
   fonts:
     - family: Lato
       fonts:
-        - asset: assets\fonts\Lato-Regular.ttf
-        - asset: assets\fonts\Lato-Bold.ttf
+        - asset: assets/fonts/Lato-Regular.ttf
+        - asset: assets/fonts/Lato-Bold.ttf
           weight: 700
     - family: Anton
       fonts:
-        - asset: assets\fonts\Anton-Regular.ttf
+        - asset: assets/fonts/Anton-Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

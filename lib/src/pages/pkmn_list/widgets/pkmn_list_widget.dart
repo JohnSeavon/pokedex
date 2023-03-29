@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/src/pages/pokemon/widgets/type_widget.dart';
 
 import '../../../data/models/pokemon.dart';
 import '../../../shared/app_routes.dart';
-import '../../../shared/get_color.dart';
 import '../../../shared/pkmn_utils.dart';
 
 class PkmnListWidget extends StatelessWidget {
@@ -13,9 +11,7 @@ class PkmnListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorType = getType(pokemon.types.first);
     return Card(
-      color: Color.lerp(colorType.color, theme.colorScheme.background, 0.5),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         onTap: () {
@@ -49,30 +45,36 @@ class PkmnListWidget extends StatelessWidget {
                 children: [
                   Text(
                     pokemon.name,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: Theme.of(context).colorScheme.onBackground,
-                        ),
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: theme.colorScheme.onBackground,
+                    ),
                   ),
                   Text(
                     '#${(pokemon.id.toString().padLeft(4, '0'))}',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onBackground,
-                        ),
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.onBackground,
+                    ),
                   ),
                 ],
               ),
               const Spacer(),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
+                child: Row(
                   children: [
-                    TypeWidget(pokemon.types.first),
+                    Image.asset(
+                      'assets/images/types/${pokemon.types.first}.png',
+                      height: 25,
+                      fit: BoxFit.contain,
+                    ),
                     if (pokemon.types.length == 2)
                       Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: TypeWidget(
-                          pokemon.types.last,
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Image.asset(
+                          'assets/images/types/${pokemon.types.last}.png',
+                          height: 25,
+                          fit: BoxFit.contain,
                         ),
                       ),
                   ],

@@ -304,7 +304,7 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                                       child: Text(
-                                        capitalize(pokemon.profile.abilities[0][0]),
+                                        pokemon.profile.abilities[0][0],
                                         style: theme.textTheme.bodySmall,
                                       ),
                                     ),
@@ -316,7 +316,7 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                                         child: Text(
-                                          capitalize(pokemon.profile.abilities[1][0]),
+                                          pokemon.profile.abilities[1][0],
                                           style: theme.textTheme.bodySmall,
                                         ),
                                       ),
@@ -328,7 +328,7 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                                         child: Text(
-                                          capitalize(pokemon.profile.abilities[2][0]),
+                                          pokemon.profile.abilities[2][0],
                                           style: theme.textTheme.bodySmall,
                                         ),
                                       ),

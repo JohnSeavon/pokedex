@@ -12,6 +12,8 @@ class GenerationsGridPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Generation> list = generationsList;
 
+    final theme = Theme.of(context);
+
     final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
     final height = size.height - padding.top - padding.bottom;
@@ -21,10 +23,10 @@ class GenerationsGridPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'PokéDex',
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.background,
-              ),
+          style: theme.textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: theme.colorScheme.background,
+          ),
         ),
         actions: const [
           ThemeChangeIcon(),
@@ -35,7 +37,7 @@ class GenerationsGridPage extends StatelessWidget {
           margin: const EdgeInsets.only(right: 10, left: 10, bottom: 5),
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
+            color: theme.colorScheme.background,
             borderRadius: const BorderRadius.all(
               Radius.circular(15),
             ),

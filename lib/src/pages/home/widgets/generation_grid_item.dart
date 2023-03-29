@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/src/shared/app_routes.dart';
 
 import '../../../data/models/generation.dart';
+import '../../../shared/pkmn_utils.dart';
 
 class GenerationGridItem extends StatelessWidget {
   final Generation generation;
@@ -13,6 +14,8 @@ class GenerationGridItem extends StatelessWidget {
     if (generation.generation == 'V') {
       generationV = true;
     }
+
+    final theme = Theme.of(context);
 
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -36,9 +39,7 @@ class GenerationGridItem extends StatelessWidget {
                     right: (isPortrait == Orientation.portrait) ? 80 : width * 0.07,
                     bottom: 20,
                     child: Image.network(
-                      (generationV)
-                          ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId + 1}.png'
-                          : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId}.png',
+                      getImageUrl(generation.initialId + ((generationV) ? 1 : 0)),
                       width: (isPortrait == Orientation.portrait) ? width * 0.22 : 90,
                       height: (isPortrait == Orientation.portrait) ? 90 : height * 0.18,
                     ),
@@ -47,17 +48,13 @@ class GenerationGridItem extends StatelessWidget {
                     left: (isPortrait == Orientation.portrait) ? 80 : width * 0.07,
                     bottom: 20,
                     child: Image.network(
-                      (generationV)
-                          ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId + 7}.png'
-                          : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 6}.png',
+                      getImageUrl(generation.initialId + ((generationV) ? 7 : 6)),
                       width: (isPortrait == Orientation.portrait) ? width * 0.22 : 90,
                       height: (isPortrait == Orientation.portrait) ? 90 : height * 0.18,
                     ),
                   ),
                   Image.network(
-                    (generationV)
-                        ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${generation.initialId + 4}.png'
-                        : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(generation.initialId) + 3}.png',
+                    getImageUrl(generation.initialId + ((generationV) ? 4 : 3)),
                     width: (isPortrait == Orientation.portrait) ? width * 0.27 : 110,
                     height: (isPortrait == Orientation.portrait) ? 110 : height * 0.20,
                   ),
@@ -66,10 +63,10 @@ class GenerationGridItem extends StatelessWidget {
               Text(
                 'Generation ${generation.generation}',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
-                      fontFamily: 'Anton',
-                    ),
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  color: theme.colorScheme.onPrimaryContainer,
+                  fontFamily: 'Anton',
+                ),
               ),
             ],
           ),
