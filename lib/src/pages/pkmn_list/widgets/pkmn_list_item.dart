@@ -70,7 +70,8 @@ class PkmnListItem extends StatelessWidget {
                       triggerMode: TooltipTriggerMode.tap,
                       showDuration: const Duration(milliseconds: 800),
                       decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(Radius.circular(15)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15)),
                         color: getType(pokemon.types.first).color,
                       ),
                       child: Image.asset(
@@ -88,7 +89,8 @@ class PkmnListItem extends StatelessWidget {
                           triggerMode: TooltipTriggerMode.tap,
                           showDuration: const Duration(milliseconds: 800),
                           decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(15)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15)),
                             color: getType(pokemon.types.last).color,
                           ),
                           child: Image.asset(

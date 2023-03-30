@@ -11,7 +11,8 @@ class PokemonListStore extends ChangeNotifier {
   final ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
 
   // Variável reativa para o state
-  final ValueNotifier<List<PokemonModel>> state = ValueNotifier<List<PokemonModel>>([]);
+  final ValueNotifier<List<PokemonModel>> state =
+      ValueNotifier<List<PokemonModel>>([]);
 
   // Variável reativa para o erro
   final ValueNotifier<String> error = ValueNotifier<String>('');

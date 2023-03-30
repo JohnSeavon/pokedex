@@ -73,7 +73,7 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
               children: [
                 Text(
                   pokemon.name,
-                  style: theme.textTheme.headlineMedium?.copyWith(
+                  style: theme.textTheme.headlineSmall?.copyWith(
                     color: theme.colorScheme.background,
                     fontWeight: FontWeight.bold,
                   ),
@@ -82,14 +82,14 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                   children: [
                     Text(
                       '#${(pokemon.id.toString().padLeft(3, '0'))} - ',
-                      style: theme.textTheme.bodyMedium?.copyWith(
+                      style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.background,
                         fontFamily: 'Lato',
                       ),
                     ),
                     Text(
                       pokemon.species,
-                      style: theme.textTheme.bodyMedium?.copyWith(
+                      style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.background,
                         fontFamily: 'Lato',
                       ),
@@ -187,7 +187,8 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                     left: 10,
                     child: IconButton(
                       onPressed: () => prevPokemon(pokemon.id),
-                      icon: Icon(Icons.chevron_left, color: theme.colorScheme.background.withOpacity(0.5)),
+                      icon: Icon(Icons.chevron_left,
+                          color: theme.colorScheme.background.withOpacity(0.5)),
                     ),
                   ),
                 if (pokemon.id != 898)
@@ -196,7 +197,8 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                     right: 10,
                     child: IconButton(
                       onPressed: () => nextPokemon(pokemon.id),
-                      icon: Icon(Icons.chevron_right, color: theme.colorScheme.background.withOpacity(0.5)),
+                      icon: Icon(Icons.chevron_right,
+                          color: theme.colorScheme.background.withOpacity(0.5)),
                     ),
                   ),
 
@@ -228,11 +230,15 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                                 child: Opacity(
                                   opacity: 0.5,
                                   child: ColorFiltered(
-                                    colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcATop),
+                                    colorFilter: const ColorFilter.mode(
+                                        Colors.black, BlendMode.srcATop),
                                     child: Image.network(
                                       getImageUrl(pokemon.id),
-                                      errorBuilder: (context, error, stackTrace) => const Center(
-                                        child: Text('Check your internet connection'),
+                                      errorBuilder:
+                                          (context, error, stackTrace) =>
+                                              const Center(
+                                        child: Text(
+                                            'Check your internet connection'),
                                       ),
                                       fit: BoxFit.contain,
                                       alignment: Alignment.bottomCenter,
@@ -245,7 +251,9 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                           GestureDetector(
                             onTap: () => toggleShiny(),
                             child: Image.network(
-                              (isShiny) ? getShinyImageUrl(pokemon.id) : getImageUrl(pokemon.id),
+                              (isShiny)
+                                  ? getShinyImageUrl(pokemon.id)
+                                  : getImageUrl(pokemon.id),
                               fit: BoxFit.contain,
                               alignment: Alignment.bottomCenter,
                             ),
@@ -262,8 +270,13 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                   child: TextButton(
                     onPressed: toggleShiny,
                     style: TextButton.styleFrom(
-                      foregroundColor: isShiny ? Color.lerp(theme.colorScheme.background, Colors.black, 0.1) : theme.colorScheme.background,
-                      backgroundColor: isShiny ? Color.lerp(colorType.color, Colors.black, 0.2) : Color.lerp(colorType.color, Colors.white, 0.15),
+                      foregroundColor: isShiny
+                          ? Color.lerp(
+                              theme.colorScheme.background, Colors.black, 0.1)
+                          : theme.colorScheme.background,
+                      backgroundColor: isShiny
+                          ? Color.lerp(colorType.color, Colors.black, 0.2)
+                          : Color.lerp(colorType.color, Colors.white, 0.15),
                       shadowColor: isShiny ? Colors.white : Colors.black54,
                       elevation: 1,
                     ),
@@ -320,7 +333,8 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                                     padding: const EdgeInsets.only(top: 12),
                                     child: Text(
                                       'About',
-                                      style: theme.textTheme.titleMedium?.copyWith(
+                                      style:
+                                          theme.textTheme.titleMedium?.copyWith(
                                         color: colorType.color,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -328,7 +342,8 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                                   ),
                                   // ! Description
                                   Padding(
-                                    padding: const EdgeInsets.only(bottom: 12, right: 20, left: 20),
+                                    padding: const EdgeInsets.only(
+                                        bottom: 12, right: 20, left: 20),
                                     child: Text(
                                       pokemon.description,
                                       textAlign: TextAlign.center,
@@ -338,10 +353,12 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                                   Row(
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 30),
                                         child: Text(
                                           'Abilities:',
-                                          style: theme.textTheme.bodyMedium?.copyWith(
+                                          style: theme.textTheme.bodyMedium
+                                              ?.copyWith(
                                             fontWeight: FontWeight.bold,
                                             fontFamily: 'Lato',
                                           ),
@@ -351,41 +368,55 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                                   ),
                                   // ! Abilities cards
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30, vertical: 5),
                                     child: Row(
                                       children: [
                                         Card(
                                           color: colorType.color.withAlpha(70),
                                           elevation: 0,
                                           child: Padding(
-                                            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 5, horizontal: 10),
                                             child: Text(
                                               pokemon.profile.abilities[0][0],
                                               style: theme.textTheme.bodySmall,
                                             ),
                                           ),
                                         ),
-                                        if (pokemon.profile.abilities.length > 1)
+                                        if (pokemon.profile.abilities.length >
+                                            1)
                                           Card(
-                                            color: colorType.color.withAlpha(70),
+                                            color:
+                                                colorType.color.withAlpha(70),
                                             elevation: 0,
                                             child: Padding(
-                                              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5,
+                                                      horizontal: 10),
                                               child: Text(
                                                 pokemon.profile.abilities[1][0],
-                                                style: theme.textTheme.bodySmall,
+                                                style:
+                                                    theme.textTheme.bodySmall,
                                               ),
                                             ),
                                           ),
-                                        if (pokemon.profile.abilities.length > 2)
+                                        if (pokemon.profile.abilities.length >
+                                            2)
                                           Card(
-                                            color: colorType.color.withAlpha(70),
+                                            color:
+                                                colorType.color.withAlpha(70),
                                             elevation: 0,
                                             child: Padding(
-                                              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5,
+                                                      horizontal: 10),
                                               child: Text(
                                                 pokemon.profile.abilities[2][0],
-                                                style: theme.textTheme.bodySmall,
+                                                style:
+                                                    theme.textTheme.bodySmall,
                                               ),
                                             ),
                                           ),
@@ -393,36 +424,43 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
                                     ),
                                   ),
                                   const Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 20),
                                     child: Divider(),
                                   ),
                                   // ! weight and height
                                   Padding(
                                     padding: const EdgeInsets.all(20),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
                                       children: [
                                         Row(
                                           children: [
                                             const Icon(Icons.scale),
-                                            Text(' Weight: ${pokemon.profile.weight}'),
+                                            Text(
+                                                ' Weight: ${pokemon.profile.weight}'),
                                           ],
                                         ),
                                         Row(
                                           children: [
                                             const Icon(Icons.height),
-                                            Text('Height: ${pokemon.profile.height}'),
+                                            Text(
+                                                'Height: ${pokemon.profile.height}'),
                                           ],
                                         ),
                                       ],
                                     ),
                                   ),
                                   const Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 20),
                                     child: Divider(),
                                   ),
                                   // ! Base stats widget
-                                  BaseStats(stats: pokemon.baseStats, color: colorType.color),
+                                  BaseStats(
+                                      stats: pokemon.baseStats,
+                                      color: colorType.color),
                                   const SizedBox(height: 10),
                                   // ! Sprites card widget
                                   SpritesCard(id: pokemon.id),

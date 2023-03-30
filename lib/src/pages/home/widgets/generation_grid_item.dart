@@ -22,7 +22,8 @@ class GenerationGridItem extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         onTap: () {
-          Navigator.of(context).pushNamed(AppRoutes.pkmnList, arguments: generation);
+          Navigator.of(context)
+              .pushNamed(AppRoutes.pkmnList, arguments: generation);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
@@ -36,7 +37,8 @@ class GenerationGridItem extends StatelessWidget {
                     right: 80,
                     bottom: 20,
                     child: Image.network(
-                      getImageUrl(generation.initialId + ((generationV) ? 1 : 0)),
+                      getImageUrl(
+                          generation.initialId + ((generationV) ? 1 : 0)),
                       width: width * 0.22,
                       height: 90,
                     ),
@@ -45,7 +47,8 @@ class GenerationGridItem extends StatelessWidget {
                     left: 80,
                     bottom: 20,
                     child: Image.network(
-                      getImageUrl(generation.initialId + ((generationV) ? 7 : 6)),
+                      getImageUrl(
+                          generation.initialId + ((generationV) ? 7 : 6)),
                       width: width * 0.22,
                       height: 90,
                     ),

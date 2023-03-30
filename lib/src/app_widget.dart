@@ -10,7 +10,8 @@ class AppWidget extends StatefulWidget {
   @override
   State<AppWidget> createState() => _AppWidgetState();
 
-  static _AppWidgetState? of(BuildContext context) => context.findAncestorStateOfType<_AppWidgetState>();
+  static _AppWidgetState? of(BuildContext context) =>
+      context.findAncestorStateOfType<_AppWidgetState>();
 }
 
 class _AppWidgetState extends State<AppWidget> {

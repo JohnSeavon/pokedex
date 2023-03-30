@@ -79,12 +79,30 @@ class BaseStats extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      LinearProgressIndicator(value: stats.hp / 255, color: color),
-                      LinearProgressIndicator(value: stats.attack / 255, color: color),
-                      LinearProgressIndicator(value: stats.defense / 255, color: color),
-                      LinearProgressIndicator(value: stats.spAttack / 255, color: color),
-                      LinearProgressIndicator(value: stats.spDefense / 255, color: color),
-                      LinearProgressIndicator(value: stats.speed / 255, color: color),
+                      LinearProgressIndicator(
+                        value: stats.hp / 255,
+                        color: color,
+                      ),
+                      LinearProgressIndicator(
+                        value: stats.attack / 255,
+                        color: color,
+                      ),
+                      LinearProgressIndicator(
+                        value: stats.defense / 255,
+                        color: color,
+                      ),
+                      LinearProgressIndicator(
+                        value: stats.spAttack / 255,
+                        color: color,
+                      ),
+                      LinearProgressIndicator(
+                        value: stats.spDefense / 255,
+                        color: color,
+                      ),
+                      LinearProgressIndicator(
+                        value: stats.speed / 255,
+                        color: color,
+                      ),
                     ],
                   ),
                 ),

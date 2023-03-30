@@ -75,7 +75,8 @@ class _GenerationsGridPageState extends State<GenerationsGridPage> {
                 horizontal: 10,
               ),
               itemCount: list.length,
-              itemBuilder: (context, index) => GenerationGridItem(list[index]))),
+              itemBuilder: (context, index) =>
+                  GenerationGridItem(list[index]))),
     );
   }
 }

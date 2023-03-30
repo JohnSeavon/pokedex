@@ -9,7 +9,8 @@ import 'src/shared/stores/pokemon_list_store.dart';
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => PokemonListStore(repository: PokemonListRepository(client: LocalSourceClient())),
+      create: (context) => PokemonListStore(
+          repository: PokemonListRepository(client: LocalSourceClient())),
       child: const AppWidget(),
     ),
   );

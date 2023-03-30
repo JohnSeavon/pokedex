@@ -36,7 +36,7 @@ class PkmnGridItem extends StatelessWidget {
                   child: FittedBox(
                     child: Text(
                       pokemon.name,
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             fontFamily: 'Lato',
                           ),
                     ),
