@@ -52,7 +52,7 @@ class PkmnListItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '#${(pokemon.id.toString().padLeft(4, '0'))}',
+                    '#${(pokemon.id.toString().padLeft(3, '0'))}',
                     style: theme.textTheme.bodyMedium?.copyWith(
                       color: theme.colorScheme.onBackground,
                     ),
